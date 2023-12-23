@@ -13,29 +13,35 @@ Parameters are list here:
 
 ```
 "dataName": data file in h5 format,
-"isBasedGrid": 是否基于⽹格划分， false为基于密度划分,
-# parameters of grid-based division
-"gridCellSize": grid size of space dimension (only used in grid-based method) 
-"minLon": 最⼩经度,
-"minLat": 最⼩纬度,
-"maxLon": 最⼤经度,
-"maxLat": 最⼤纬度,
+"method": "density" or "grid"
 
-"needTime": 是否需要考虑时间， false代表空间轨迹分析
-"timeStart": 起始时间,设为0即可
-"timeCellSize": grid size of time dimension (only used in grid-based method)
-"minTime": 最⼩时间,
-"maxTime": 最⼤时间,
+# parameters for grid-based division
+"gridCellSize": grid size in spatial dimension
+"minLon": minimum longitude,
+"minLat": minimum latitude,
+"maxLon": maximum longitude,
+"maxLat": maximum latitude,
+"ignoreTemporal": if ignore the temporal dimension and only process spatial dimension
+"timeStart": start time, usually set to zero
+"timeCellSize": grid size in temporal dimension 
+"minTime": minimum time,
+"maxTime": maximum time,
 
-"stme_k": stme模型参数k,
-"stme_kt": stme模型参数kt,
-"stme_min_pts": stme模型参数pts
-"hasLabel": 数据集是否存在标签,
+# parameters for density-based division
+"stme_k": parameter k of the density-based division algorithm STME,
+"stme_kt": parameter kt of the density-based division algorithm STME,
+"stme_min_pts": parameter min_pts of the density-based division algorithm STME
+"hasLabel": if data has ground truth label,
 ```
 
-3. Run the script
+3. Run the preprocess script
 
 ```
 cd preprrcessing
 python preprocess.py
 ```
+After preprocess, token sequence are generated in `train/val/test.src` and `train/val/test.tar` files, which used for training, validation and testing. The region infomation and the vocabulary representing the division results are saved in `region.pkl` and `*-knearestvocabs.h5` respectively.
+
+## Training (still updating ...)
+The training step includes two steps: pretraining and joint-training.
+
