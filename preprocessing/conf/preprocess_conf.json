@@ -1,0 +1,17 @@
+{
+	"timeCellSize": 120,
+	"gridCellSize": 50.0,
+	"dataName": "testOpen",
+	"needTime": true,
+	"isBasedGrid": true,
+	"hasLabel": true,
+	"minLon": 7.999,
+	"minLat": 39.999,
+	"maxLon": 8.007,
+	"maxLat": 40.004,
+	"minTime": 0,
+	"maxTime": 86400,
+	"stme_k": 20,
+	"stme_kt": 10,
+	"stme_min_pts": 12
+}
