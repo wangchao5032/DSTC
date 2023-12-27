@@ -42,6 +42,18 @@ python preprocess.py
 ```
 After preprocess, token sequence are generated in `train/val/test.src` and `train/val/test.tar` files, which used for training, validation and testing. The region infomation and the vocabulary representing the division results are saved in `region.pkl` and `*-knearestvocabs.h5` respectively.
 
-## Training (still updating ...)
+## Training 
 The training includes two steps: pretraining and joint-training.
 
+1. modify config file in `training/conf/train_conf.json`.
+```
+"method": "pretraining" or "joint-training"
+"expId": experiment ID,
+"vocabSize": vocabulary size,
+"clusterNum": number of clusters,
+"embeddingSize": length of embedding vector,
+"hiddenSize": size of hidden layers,
+"batch": batch size,
+...
+```
+2. updating ...
