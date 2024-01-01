@@ -1,5 +1,4 @@
-# A Deep Spatiotemporal Trajectory Representation Learning Framework for Clustering
-
+# (Work in Process) A Deep Spatiotemporal Trajectory Representation Learning Framework for Clustering
 ## Install
 Run ``pip install -e .``
 
@@ -43,17 +42,43 @@ python preprocess.py
 After preprocess, token sequence are generated in `train/val/test.src` and `train/val/test.tar` files, which used for training, validation and testing. The region infomation and the vocabulary representing the division results are saved in `region.pkl` and `*-knearestvocabs.h5` respectively.
 
 ## Training 
-The training includes two steps: pretraining and joint-training.
+The training includes two modes: pretraining and joint-training.
 
 1. modify config file in `training/conf/train_conf.json`.
 ```
-"method": "pretraining" or "joint-training"
+"mode": "pretraining" or "joint-training",
 "expId": experiment ID,
 "vocabSize": vocabulary size,
 "clusterNum": number of clusters,
 "embeddingSize": length of embedding vector,
 "hiddenSize": size of hidden layers,
 "batch": batch size,
-...
+"t2vecBatch": pre-train batch,
+"learningRate": learning rate,
+"dropout": dropout parameter,
+"m2LearningRate": joint-learning learning rate,
+"distDecaySpeed": penalty parameter for far distance cell,
+"alpha": reconstruction loss, 
+"beta": soft cluster assignment loss,
+"gamma": inter-cluster distance loss,
+"delta": neighbour loss,
+"kmeans": k-means loss,
+"epochs": epochs,
+"dataName": dataset name,
+"sourceData": dataset path,
+"needSave": if save results,
+"saveFreq": save frequency,
+"hasLabel": if data has ground truth label
 ```
-2. updating ...
+2. run the training script
+```
+cd training
+python dstc.py
+```
+
+3. check results. Run 
+```
+cd showResult
+python predict.py
+```
+the results is shown in `showResult/cluster_png/`.
